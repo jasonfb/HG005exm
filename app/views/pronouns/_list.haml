@@ -1,0 +1,12 @@
+= turbo_frame_tag "pronouns-list" do
+  .container-fluid.pronoun-table
+    .row
+      .col Name
+      .col
+    %div
+      - if pronouns.empty?
+        None
+      - pronouns.each do |pronoun|
+        = render partial: 'pronouns/line', locals: {pronoun: pronoun  }
+    - if pronouns.respond_to?(:total_pages)
+      = paginate pronouns

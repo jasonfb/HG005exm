@@ -1,0 +1,14 @@
+= turbo_frame_tag "things-list" do
+  .container-fluid.thing-table
+    .row
+      .col Name
+      .col Age
+      .col Pronoun
+      .col
+    %div
+      - if things.empty?
+        None
+      - things.each do |thing|
+        = render partial: 'things/line', locals: {thing: thing  }
+    - if things.respond_to?(:total_pages)
+      = paginate things

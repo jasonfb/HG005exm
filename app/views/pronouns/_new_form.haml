@@ -1,0 +1,7 @@
+= turbo_frame_tag "pronoun-new" do
+  %h3
+    New Pronoun
+
+  = form_with model: pronoun, url: pronouns_path(), method: "post" do  |f|
+    = render partial: "pronouns/form", locals: {pronoun: pronoun, f: f}
+

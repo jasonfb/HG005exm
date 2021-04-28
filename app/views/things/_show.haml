@@ -1,0 +1,12 @@
+.col
+  = thing.name
+.col
+  = thing.age
+.col
+  = thing.pronoun.try(:name) || '<span class="content alert-danger">MISSING</span>'.html_safe
+.col
+  
+  = link_to "Delete <i class='fa fa-1x fa-remove'></i>".html_safe, thing_path(thing), method: :delete, data: {confirm: 'Are you sure?'},  disable_with: "Loading...", class: "delete-thing-button btn btn-primary "
+  
+  &nbsp;
+  = link_to "Edit <i class='fa fa-1x fa-list-alt'></i>".html_safe, edit_thing_path(thing), disable_with: "Loading...", class: "edit-thing-button btn btn-primary "

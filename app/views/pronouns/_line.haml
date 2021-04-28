@@ -1,0 +1,6 @@
+= turbo_frame_tag "pronoun__#{pronoun.id}" do
+  .row{'data-id': pronoun.id, 'data-edit': 'false'}
+    = render partial: "pronouns/show", locals: {pronoun: pronoun}
+
+
+

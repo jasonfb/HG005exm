@@ -1,0 +1,8 @@
+.row
+  .col{class: "form-group #{'alert-danger' if pronoun.errors.details.keys.include?(:name)}"}
+    = f.text_field :name, value: @pronoun.name, size: 256, class: 'form-control', type: ''
+    %label.form-text
+      Name
+
+  .col
+    = f.submit "Save", class: "btn btn-primary pull-right"

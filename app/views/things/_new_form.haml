@@ -1,0 +1,7 @@
+= turbo_frame_tag "thing-new" do
+  %h3
+    New Thing
+
+  = form_with model: thing, url: things_path(), method: "post" do  |f|
+    = render partial: "things/form", locals: {thing: thing, f: f}
+

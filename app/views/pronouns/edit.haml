@@ -1,0 +1,21 @@
+= link_to "<i class='fa fa-arrow-circle-left  2x'></i> Back to list".html_safe, pronouns_path
+
+= turbo_frame_tag "pronoun__#{@pronoun.id}" do
+  .cell.editable{style: "position: relative;"}
+    - if @pronoun.errors.any?
+      = render(partial: "#{controller.namespace}errors", locals: {resource: @pronoun})
+
+
+    Editing
+    - if @pronoun.try(:to_label)
+      = @pronoun.to_label
+    - elsif @pronoun.try(:name)
+      = @pronoun.name
+    - else
+      (no name)
+
+    = form_with model: @pronoun, url: pronoun_path(@pronoun) do |f|
+      = render partial: "form",  locals: {:pronoun => @pronoun, f: f}
+
+    %i.fa.fa-times-circle.fa-2x{ 'data-name' =>  'close-invoice__#{@invoice.id}', 'data-row-id' =>  @pronoun.id, 'data-role' =>  'close-button'}
+

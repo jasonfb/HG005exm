@@ -1,0 +1,21 @@
+= link_to "<i class='fa fa-arrow-circle-left  2x'></i> Back to list".html_safe, things_path
+
+= turbo_frame_tag "thing__#{@thing.id}" do
+  .cell.editable{style: "position: relative;"}
+    - if @thing.errors.any?
+      = render(partial: "#{controller.namespace}errors", locals: {resource: @thing})
+
+
+    Editing
+    - if @thing.try(:to_label)
+      = @thing.to_label
+    - elsif @thing.try(:name)
+      = @thing.name
+    - else
+      (no name)
+
+    = form_with model: @thing, url: thing_path(@thing) do |f|
+      = render partial: "form",  locals: {:thing => @thing, f: f}
+
+    %i.fa.fa-times-circle.fa-2x{ 'data-name' =>  'close-invoice__#{@invoice.id}', 'data-row-id' =>  @thing.id, 'data-role' =>  'close-button'}
+

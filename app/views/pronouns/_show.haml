@@ -1,0 +1,8 @@
+.col
+  = pronoun.name
+.col
+  
+  = link_to "Delete <i class='fa fa-1x fa-remove'></i>".html_safe, pronoun_path(pronoun), method: :delete, data: {confirm: 'Are you sure?'},  disable_with: "Loading...", class: "delete-pronoun-button btn btn-primary "
+  
+  &nbsp;
+  = link_to "Edit <i class='fa fa-1x fa-list-alt'></i>".html_safe, edit_pronoun_path(pronoun), disable_with: "Loading...", class: "edit-pronoun-button btn btn-primary "

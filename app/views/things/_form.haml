@@ -1,0 +1,17 @@
+.row
+  .col{class: "form-group #{'alert-danger' if thing.errors.details.keys.include?(:name)}"}
+    = f.text_field :name, value: @thing.name, size: 256, class: 'form-control', type: ''
+    %label.form-text
+      Name
+
+  .col{class: "form-group #{'alert-danger' if @thing.errors.details.keys.include?(:age)}"}
+    = f.text_field :age, value: thing.age, class: 'form-control', size: 4, type: 'number'
+    %label.form-text
+      Age
+
+  .col{class: "form-group #{'alert-danger' if thing.errors.details.keys.include?(:pronoun)}"}
+    = f.collection_select(:pronoun_id, Pronoun.all, :id, :name, {prompt: true, selected: @thing.pronoun_id }, class: 'form-control')
+    %label.small.form-text.text-muted
+      Pronoun
+  .col
+    = f.submit "Save", class: "btn btn-primary pull-right"

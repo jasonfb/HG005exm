@@ -1,0 +1,9 @@
+
+= turbo_stream.replace "thing__#{@thing.id}" do
+  = render partial: 'line', locals: {thing: @thing  }
+
+
+= turbo_stream.replace "flash_notices" do
+  = render partial: "layouts/flash_notices"
+  - if @thing.errors.any?
+    = render partial: "errors", locals: {resource: @thing}
